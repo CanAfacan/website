@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project 2</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.png" type="image/png" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+    <div class="logo">
+        Can Afacan <div class="binary-led-row" id="binaryDisplay"></div>
+    </div>
+
+    <div class="nav-right">
+        <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+        <a href="https://github.com/CanAfacan" target="_blank">
+            <img src="../images/github.png" alt="GitHub" class="nav-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+            <img src="../images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
+        </a>
+        </div>
+    </div>
+    </nav>
+  </header>
+
+
+  <section style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
+    <h1 style="margin-bottom: 1rem;">CAD Engine for VLSI Applications</h1>
+
+    <p style="margin-bottom: 2rem;">
+      Designed a Python-based CAD engine tailored for floorplanning and routing in VLSI design, focusing on electromagnetic compatibility and RF signal integrity. Incorporated a simulated annealing algorithm to optimize the placement of components based on realistic physical constraints such as magnetic field effects and parasitic interference. Developed a graphical user interface (GUI) to visualize the layout evolution and final topology, helping better align automated CAD tools with physical electromagnetic considerations. Work culminated in a multi-part simulation pipeline, validated by hand-designed benchmarks and demonstrated visually using color-coded density and field overlap metrics.
+    </p>
+    <p style="margin-bottom: 2rem;">
+      The application creates a random layout, with random blocks and randomly assigned pins. Users can add, remove, or change the blocks and pins. Magnetic characteristics of the components can be set. After these steps users can run simulated annealing floorplanning algorithms which include rectangular or wheel placement. For routing, three types of algorithms are available: Manhattan, Euclidean, and Steiner-Tree. After routing and magnetic characterization is complete, users can view the electric field density map and determine if the layout is feasible.
+    </p>
+
+
+    <p style="margin-bottom: 2rem;">
+      GitHub Repository: 
+      <a href="https://github.com/CanAfacan/Magnetic-Field-Aware-Floor-Planning-and-Obstacle-Driven-Routing-for-MRAM-MTJ-" 
+        target="_blank" 
+        style="color: var(--accent); font-weight: 500; text-decoration: underline;">
+        https://github.com/CanAfacan/Magnetic-Field-Aware-Floor-Planning-and-Obstacle-Driven-Routing-for-MRAM-MTJ-
+      </a>
+    </p>
+
+    <div class="image-grid">
+      <figure>
+        <div class="image-wrapper">
+          <img src="../images/initialmenu357.png" alt="Screenshot 1" />
+        </div>
+        <figcaption>Figure 1: Initial Random Floorplan and Component Mapping</figcaption>
+      </figure>
+      <figure>
+        <div class="image-wrapper">
+          <img src="../images/manhattan357.png" alt="Screenshot 2" />
+        </div>
+        <figcaption>Figure 2: Layout after Manhattan Routing and Rectangular Floorplanning</figcaption>
+      </figure>
+      <figure>
+        <div class="image-wrapper">
+          <img src="../images/efield2.png" alt="Screenshot 3" />
+        </div>
+        <figcaption>Figure 3: E-Field of Figure 2 Layout</figcaption>
+      </figure>
+      <figure>
+        <div class="image-wrapper">
+          <img src="../images/steiner357.png" alt="Screenshot 4" />
+        </div>
+        <figcaption>Figure 4: Steiner-Tree Style Routing</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
+
+
+  <!-- PDF Preview -->
+  <h2 style="margin-top: 2rem;">Project Report</h2>
+  <iframe 
+    src="project2.pdf" 
+    width="100%" 
+    height="600px" 
+    style="border: 1px solid #ccc; border-radius: 8px; margin-bottom: 1rem;">
+  </iframe>
+
+  <p>
+    <a href="project2.pdf" download class="view-button">Download Full Report (PDF)</a>
+  </p>
+
+  <p style="margin-top: 2rem;">
+    <a href="../index.html" style="color: var(--accent); font-weight: 600;">← Back to Home</a>
+  </p>
+</section>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <p>© 2025 Can Afacan. All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/CanAfacan" target="_blank">
+        <img src="../images/github.png" alt="GitHub" class="footer-icon" />
+      </a>
+      <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+        <img src="../images/linkedin.jpg" alt="LinkedIn" class="footer-icon" />
+      </a>
+    </div>
+  </footer>
+
+  <style>
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Exactly 2 columns */
+  gap: 2rem;
+}
+
+
+    figure {
+      margin: 0;
+      text-align: center;
+    }
+
+    .image-wrapper {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    figcaption {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--subtle);
+    }
+  </style>
+
+<script>
+  const hexTicker = document.querySelector(".hex-ticker");
+  const hexCodes = [
+    "0x43", // C
+    "0x61", // a
+    "0x6E", // n
+    "0x20", // space
+    "0x41", // A
+    "0x66", // f
+    "0x61", // a
+    "0x63", // c
+    "0x61", // a
+    "0x6E"  // n
+  ];
+
+  let index = 0;
+  setInterval(() => {
+    hexTicker.textContent = hexCodes[index];
+    index = (index + 1) % hexCodes.length;
+  }, 800); // Adjust speed here if needed
+</script>
+
+<script>
+  const binaryDisplay = document.getElementById("binaryDisplay");
+  const text = "Can Afacan";
+  const binarySequence = text
+    .split("")
+    .map(char => char.charCodeAt(0).toString(2).padStart(8, "0"));
+
+  let currentIndex = 0;
+
+  function updateLEDs(binaryStr) {
+    binaryDisplay.innerHTML = ""; // Clear old LEDs
+    for (let bit of binaryStr) {
+      const dot = document.createElement("div");
+      dot.classList.add("led-dot");
+      if (bit === "1") dot.classList.add("on");
+      binaryDisplay.appendChild(dot);
+    }
+  }
+
+  setInterval(() => {
+    updateLEDs(binarySequence[currentIndex]);
+    currentIndex = (currentIndex + 1) % binarySequence.length;
+  }, 700); // adjust for blink speed
+</script>
+
+
+</body>
+</html>

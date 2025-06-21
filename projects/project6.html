@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project 6</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.png" type="image/png" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+    <div class="logo">
+        Can Afacan <div class="binary-led-row" id="binaryDisplay"></div>
+    </div>
+
+    <div class="nav-right">
+        <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+        <a href="https://github.com/CanAfacan" target="_blank">
+            <img src="../images/github.png" alt="GitHub" class="nav-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+            <img src="../images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
+        </a>
+        </div>
+    </div>
+    </nav>
+  </header>
+  
+<section style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
+  <h1 style="margin-bottom: 1rem;">Multiply-Accumulate (MAC) Module in Verilog (Final Assignment for Advanced Digital Design - CE 303)</h1>
+
+  <p style="margin-bottom: 2rem;">
+    The Multiply-Accumulate (MAC) module is a pipelined digital circuit designed to compute the accumulation of products between a 4-bit signed input and a 4-bit signed weight over multiple clock cycles. Specifically, it processes one multiplication per cycle, accumulates the result over 8 cycles, and outputs a 12-bit signed result on the 9th cycle.
+  </p>
+
+  <p style="margin-bottom: 2rem;">
+    The design incorporates internal registers for input synchronization, multiplication, and accumulation stages, ensuring correct timing and data stability under a 1&nbsp;GHz clock. The MAC module was verified through testbenches with a variety of input patterns and synthesized with standard cell libraries, satisfying timing constraints and maintaining functional equivalence across RTL and gate-level simulations.
+  </p>
+
+  <p style="margin-top: 2rem;">
+    <a href="../index.html" style="color: var(--accent); font-weight: 600;">← Back to Home</a>
+  </p>
+</section>
+
+  <!-- Footer (reused) -->
+  <footer class="site-footer">
+    <div class="footer-left">
+      <p>© 2025 Can Afacan. All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/CanAfacan" target="_blank">
+        <img src="../images/github.png" alt="GitHub" class="footer-icon" />
+      </a>
+      <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+        <img src="../images/linkedin.jpg" alt="LinkedIn" class="footer-icon" />
+      </a>
+    </div>
+  </footer>
+
+
+  <script>
+  const hexTicker = document.querySelector(".hex-ticker");
+  const hexCodes = [
+    "0x43", // C
+    "0x61", // a
+    "0x6E", // n
+    "0x20", // space
+    "0x41", // A
+    "0x66", // f
+    "0x61", // a
+    "0x63", // c
+    "0x61", // a
+    "0x6E"  // n
+  ];
+
+  let index = 0;
+  setInterval(() => {
+    hexTicker.textContent = hexCodes[index];
+    index = (index + 1) % hexCodes.length;
+  }, 800); // Adjust speed here if needed
+</script>
+
+<script>
+  const binaryDisplay = document.getElementById("binaryDisplay");
+  const text = "Can Afacan";
+  const binarySequence = text
+    .split("")
+    .map(char => char.charCodeAt(0).toString(2).padStart(8, "0"));
+
+  let currentIndex = 0;
+
+  function updateLEDs(binaryStr) {
+    binaryDisplay.innerHTML = ""; // Clear old LEDs
+    for (let bit of binaryStr) {
+      const dot = document.createElement("div");
+      dot.classList.add("led-dot");
+      if (bit === "1") dot.classList.add("on");
+      binaryDisplay.appendChild(dot);
+    }
+  }
+
+  setInterval(() => {
+    updateLEDs(binarySequence[currentIndex]);
+    currentIndex = (currentIndex + 1) % binarySequence.length;
+  }, 700); // adjust for blink speed
+</script>
+
+</body>
+</html>

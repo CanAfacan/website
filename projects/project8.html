@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project 8</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.png" type="image/png" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+    <div class="logo">
+        Can Afacan <div class="binary-led-row" id="binaryDisplay"></div>
+    </div>
+
+    <div class="nav-right">
+        <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+        <a href="https://github.com/CanAfacan" target="_blank">
+            <img src="../images/github.png" alt="GitHub" class="nav-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+            <img src="../images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
+        </a>
+        </div>
+    </div>
+    </nav>
+  </header>
+
+<section style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
+  <h1 style="margin-bottom: 1rem;">Automatic Signaling Jacket for Non-Cabined Vehicles</h1>
+
+  <p style="margin-bottom: 2rem;">
+    This project presents a waterproof wearable signaling system engineered for cyclists and e-scooter riders. The jacket integrates a gyroscopic sensor and real-time embedded software to automatically detect body lean and activate turn signals without user interaction. Built in C++ with onboard sensor fusion and motion analysis, it enables intuitive signaling aligned with natural rider movement. The system was prototyped across four iterations, achieving successful demonstration and recognition as a finalist in Teknofest and TÜBİTAK national competitions. Industrial production viability was confirmed by the Turkish Patent Institute (2022/016379 · Issued Oct 29, 2022).
+  </p>
+
+  <div class="image-grid">
+    <figure>
+      <div class="image-wrapper">
+        <img src="../images/jacket.jpg" alt="CAD Model of Jacket System" />
+      </div>
+      <figcaption>Figure 1: CAD Image of Jacket and Circuit Layout</figcaption>
+    </figure>
+  </div>
+</section>
+
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <p>© 2025 Can Afacan. All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/CanAfacan" target="_blank">
+        <img src="../images/github.png" alt="GitHub" class="footer-icon" />
+      </a>
+      <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+        <img src="../images/linkedin.jpg" alt="LinkedIn" class="footer-icon" />
+      </a>
+    </div>
+  </footer>
+
+  <style>
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Exactly 2 columns */
+  gap: 2rem;
+}
+
+
+    figure {
+      margin: 0;
+      text-align: center;
+    }
+
+    .image-wrapper {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    figcaption {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--subtle);
+    }
+  </style>
+
+<script>
+  const hexTicker = document.querySelector(".hex-ticker");
+  const hexCodes = [
+    "0x43", // C
+    "0x61", // a
+    "0x6E", // n
+    "0x20", // space
+    "0x41", // A
+    "0x66", // f
+    "0x61", // a
+    "0x63", // c
+    "0x61", // a
+    "0x6E"  // n
+  ];
+
+  let index = 0;
+  setInterval(() => {
+    hexTicker.textContent = hexCodes[index];
+    index = (index + 1) % hexCodes.length;
+  }, 800); // Adjust speed here if needed
+</script>
+
+<script>
+  const binaryDisplay = document.getElementById("binaryDisplay");
+  const text = "Can Afacan";
+  const binarySequence = text
+    .split("")
+    .map(char => char.charCodeAt(0).toString(2).padStart(8, "0"));
+
+  let currentIndex = 0;
+
+  function updateLEDs(binaryStr) {
+    binaryDisplay.innerHTML = ""; // Clear old LEDs
+    for (let bit of binaryStr) {
+      const dot = document.createElement("div");
+      dot.classList.add("led-dot");
+      if (bit === "1") dot.classList.add("on");
+      binaryDisplay.appendChild(dot);
+    }
+  }
+
+  setInterval(() => {
+    updateLEDs(binarySequence[currentIndex]);
+    currentIndex = (currentIndex + 1) % binarySequence.length;
+  }, 700); // adjust for blink speed
+</script>
+
+
+</body>
+</html>

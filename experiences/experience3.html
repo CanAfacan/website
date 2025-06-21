@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IEEE - Treasurer</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.png" type="image/png" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+    <div class="logo">
+        Can Afacan <div class="binary-led-row" id="binaryDisplay"></div>
+    </div>
+
+    <div class="nav-right">
+        <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+        <a href="https://github.com/CanAfacan" target="_blank">
+            <img src="../images/github.png" alt="GitHub" class="nav-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+            <img src="../images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
+        </a>
+        </div>
+    </div>
+    </nav>
+  </header>
+
+  <section style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
+  <h1 style="margin-bottom: 1rem;">IEEE Treasurer – Northwestern Student Chapter</h1>
+
+  <p style="margin-bottom: 2rem;">
+    As the Treasurer of the IEEE Northwestern Student Chapter, I managed and allocated a $5,000 annual budget to support over 20 student-led events, including technical workshops, project showcases, and academic competitions. This involved close coordination with university financial offices to ensure timely funding and compliance with student organization policies.
+  </p>
+
+  <p style="margin-bottom: 2rem;">
+    I developed budget plans, filed procurement forms, and monitored all expense reports. In addition to handling logistics and reimbursements, I prioritized equitable funding across teams, which supported over 50 active student members in their technical growth and extracurricular involvement.
+  </p>
+
+  <p style="margin-bottom: 2rem;">
+    This role strengthened my skills in financial planning, cross-functional communication, and strategic resource allocation. It also reinforced my commitment to building inclusive and technically enriching communities within the engineering department.
+  </p>
+
+    <div class="image-wrapper" style="margin: 2rem 0;">
+    <img src="../images/ieeeexec2025.JPG" alt="IEEE Event" style="width: 100%; height: auto; border-radius: 8px; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" />
+    <p style="text-align: center; margin-top: 0.5rem; font-size: 0.95rem; color: var(--subtle);">Figure 1: IEEE Student Chapter Event at Northwestern</p>
+  </div>
+
+  <p style="margin-top: 2rem;">
+    <a href="../index.html#experience" style="color: var(--accent); font-weight: 600;">← Back to Experience</a>
+  </p>
+
+</section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-left">
+      <p>© 2025 Can Afacan. All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/CanAfacan" target="_blank">
+        <img src="../images/github.png" alt="GitHub" class="footer-icon" />
+      </a>
+      <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+        <img src="../images/linkedin.jpg" alt="LinkedIn" class="footer-icon" />
+      </a>
+    </div>
+  </footer>
+
+  <style>
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    figure {
+      margin: 0;
+      text-align: center;
+    }
+
+    .image-wrapper {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    figcaption {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--subtle);
+    }
+  </style>
+
+<script>
+  const hexTicker = document.querySelector(".hex-ticker");
+  const hexCodes = [
+    "0x43", // C
+    "0x61", // a
+    "0x6E", // n
+    "0x20", // space
+    "0x41", // A
+    "0x66", // f
+    "0x61", // a
+    "0x63", // c
+    "0x61", // a
+    "0x6E"  // n
+  ];
+
+  let index = 0;
+  setInterval(() => {
+    hexTicker.textContent = hexCodes[index];
+    index = (index + 1) % hexCodes.length;
+  }, 800); // Adjust speed here if needed
+</script>
+
+<script>
+  const binaryDisplay = document.getElementById("binaryDisplay");
+  const text = "Can Afacan";
+  const binarySequence = text
+    .split("")
+    .map(char => char.charCodeAt(0).toString(2).padStart(8, "0"));
+
+  let currentIndex = 0;
+
+  function updateLEDs(binaryStr) {
+    binaryDisplay.innerHTML = ""; // Clear old LEDs
+    for (let bit of binaryStr) {
+      const dot = document.createElement("div");
+      dot.classList.add("led-dot");
+      if (bit === "1") dot.classList.add("on");
+      binaryDisplay.appendChild(dot);
+    }
+  }
+
+  setInterval(() => {
+    updateLEDs(binarySequence[currentIndex]);
+    currentIndex = (currentIndex + 1) % binarySequence.length;
+  }, 700); // adjust for blink speed
+</script>
+
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Can Afacan</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+</head>
+<body>
+    <!-- NMOS Loader – symmetric leads (source = drain length) -->
+    <div id="loader">
+    <div class="nmos-animation">
+        <svg viewBox="0 0 500 300" width="240" height="160" aria-label="NMOS transistor schematic">
+        <!-- Stepped conduction path: Source (left) ➜ bump ➜ Drain (right) -->
+        <!-- Source lead (left horizontal, extended to match drain) -->
+        <line x1="20"  y1="240" x2="140" y2="240" stroke="black" stroke-width="6" />
+        <!-- Up step -->
+        <line x1="140" y1="240" x2="140" y2="180" stroke="black" stroke-width="6" />
+        <!-- Across the channel -->
+        <line x1="140" y1="180" x2="300" y2="180" stroke="black" stroke-width="6" />
+        <!-- Down step -->
+        <line x1="300" y1="180" x2="300" y2="240" stroke="black" stroke-width="6" />
+        <!-- Drain lead (right horizontal) -->
+        <line x1="300" y1="240" x2="420" y2="240" stroke="black" stroke-width="6" />
+
+        <!-- Gate poly (horizontal, parallel to channel, slightly above, full width) -->
+        <line x1="140" y1="150" x2="300" y2="150" stroke="black" stroke-width="6" />
+        <!-- Gate via (vertical) -->
+        <line x1="220" y1="60"  x2="220" y2="150" stroke="black" stroke-width="6" />
+        <!-- Gate‑charge pulse drops to gate -->
+        <circle r="7" fill="gold" class="gate-pulse" />
+        <!-- Conduction pulse follows stepped path -->
+        <path d="M20 240 H140 V180 H300 V240 H420" stroke="gold" stroke-width="6" class="source-drain-pulse" fill="none" />
+        </svg>
+        <div class="loader-text">Loading&nbsp;… </div>
+    </div>
+    </div>
+
+    <style>
+    #loader { position: fixed; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #fff; z-index: 9999; }
+    .nmos-animation { padding: 2rem; text-align: center; }
+    .nmos-animation svg { display: block; margin: auto; }
+
+    .gate-pulse {
+        transform: translate(220px, 70px);
+        animation: dropPulse 2.5s infinite;
+    }
+    @keyframes dropPulse {
+        0%   { transform: translate(220px, 70px);  opacity: 0; }
+        20%  { transform: translate(220px, 110px); opacity: 1; }
+        40%  { transform: translate(220px, 150px); opacity: 1; }
+        60%,100% { opacity: 0; }
+    }
+
+    .source-drain-pulse {
+        stroke-dasharray: 620;           /* updated path length */
+        stroke-dashoffset: 620;
+        animation: flowPulse 2.5s ease-out infinite;
+        animation-delay: 1.25s;
+    }
+    @keyframes flowPulse {
+        0%   { stroke-dashoffset: 620; opacity: 0; }
+        30%  { stroke-dashoffset: 310; opacity: 1; }
+        100% { stroke-dashoffset: 0;   opacity: 0; }
+    }
+
+    .loader-text { font-family: 'JetBrains Mono', monospace; font-size: 1rem; margin-top: 0.5rem; color: #444; }
+    </style>
+
+  <header>
+    <nav class="navbar">
+    <div class="logo">
+        Can Afacan <div class="binary-led-row" id="binaryDisplay"></div>
+    </div>
+
+    <div class="nav-right">
+        <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+        <a href="https://github.com/CanAfacan" target="_blank">
+            <img src="images/github.png" alt="GitHub" class="nav-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+            <img src="images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
+        </a>
+        </div>
+    </div>
+    </nav>
+  </header>
+
+<section id="hero" class="hero">
+  <div class="hero-container">
+    <img src="images/profile2.1.jpg" alt="Profile Photo" class="profile-pic" />
+    <div class="hero-text">
+      <div class="typewriter">
+        <h1><span id="typed-text"></span><span class="cursor" id="cursor1">|</span></h1>
+        <p><span id="typed-bio"></span><span class="cursor" id="cursor2">|</span></p>
+        </div>
+    </div>
+  </div>
+</section>
+
+  <section id="experience">
+  <h2>Experience and Leadership</h2>
+  <div class="card-grid">
+    
+    <div class="card">
+      <img src="images/ttrng.png" alt="Experience 1 Image">
+      <div class="card-content">
+        <h3>Spintronics Research in Physical Electronics Research Laboratory</h3>
+        <p>Developed a high-speed true random number generator using MTJs, validated with NIST tests. Designed full-stack PCB hardware, characterized MTJs, and built custom C++ tooling for integration.</p>
+        <a href="experiences/experience1.html" class="view-button">View Details</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/ta203.png" alt="Experience 2 Image">
+      <div class="card-content">
+        <h3>Undergraduate Teaching Assistant in CE 203 - Introduction to Computer Engineering</h3>
+        <p>Provided hands-on support to 80+ students in digital logic and LC-3 assembly. Led 36 office hours and graded lab assignments while assisting with lab instrumentation and conceptual understanding.</p>
+        <a href="experiences/experience2.html" class="view-button">View Details</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/ieeenu.jpg" alt="Experience 3 Image">
+      <div class="card-content">
+        <h3>Treasurer - IEEE Northwestern Student Branch</h3>
+        <p>Managed a $5,000 budget to fund 10+ tech events, workshops, and guest talks. Supported 50+ members and led all finance operations for the chapter.</p>
+        <a href="experiences/experience3.html" class="view-button">View Details</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Relevant Projects</h2>
+<div class="card-grid">
+  <div class="card">
+    <img src="images/vlsi392.png" alt="Project 1 Image">
+    <div class="card-content">
+      <h3>Non-Volatile Logic-in-Memory FPGA Design with MTJs </h3>
+      <p>Designed and implemented a digital circuit layout using 45nm technology in a custom CAD flow.</p>
+      <a href="projects/project1.html" class="view-button">View Project</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/efield357.png" alt="Project 2 Image">
+    <div class="card-content">
+      <h3>CAD Engine for VLSI Applications with Magnetic and RF Components</h3>
+      <p>Built a Python tool with GUI and simulated annealing to optimize VLSI floorplans with RF/magnetic constraints.</p>
+      <a href="projects/project2.html" class="view-button">View Project</a>
+    </div>
+  </div>
+
+    <div class="card">
+    <img src="images/intermag2025.png" alt="Project 4 Image">
+    <div class="card-content">
+      <h3>Real-Time Magnetic Field Scanner</h3>
+      <p>Designed a joystick-controlled AMR scanner with Hall trigger; visualized 3D fields in Python. 3rd place at MMM-Intermag 2025.</p>
+      <a href="projects/project4.html" class="view-button">View Project</a>
+    </div>
+  </div>
+
+    <div class="card">
+    <img src="images/flappy346.jpg" alt="Project 5 Image">
+    <div class="card-content">
+      <h3>Embedded Systems - Flappy Bird Game on nRF52833</h3>
+      <p>Developed a voice-controlled Flappy Bird game on nRF52833 with RTOS, touchscreen, and MEMS mic integration.</p>
+      <a href="projects/project5.html" class="view-button">View Project</a>
+    </div>
+  </div>
+
+    <div class="card">
+    <img src="images/braillegriddemo.jpg" alt="Project 7 Image">
+    <div class="card-content">
+      <h3>Braille-Grid - IEEE Northwestern Chapter Project Competition 2024</h3>
+      <p>Implemented the Hardware of Grid Actuators for Visually-Impaired Users</p>
+      <a href="projects/project7.html" class="view-button">View Project</a>
+    </div>
+  </div>
+
+      <div class="card">
+    <img src="images/jacket.jpg" alt="Project 8 Image">
+    <div class="card-content">
+        <h3>Automatic Signaling Jacket</h3>
+        <p>Developed a wearable signaling system using motion sensors for cyclists. Automatically triggers turn signals based on body lean, built in C++ and demonstrated at national competitions.</p>
+      <a href="projects/project8.html" class="view-button">View Project</a>
+    </div>
+  </div>
+</div>
+  
+    <h3 style="margin: 2.5rem 0 1.5rem;">Relevant Class Assignments</h3>
+  <div class="card-grid">
+   <div class="card">
+    <img src="images/mac303.png" alt="Project 6 Image">
+    <div class="card-content">
+      <h3>Multiplication-Accumulation Module in Verilog (CE 303)</h3>
+      <p>Implemented a pipelined 4-bit signed MAC for ASIC flow; verified with XCelium and synthesized to 28nm.</p>
+      <a href="projects/project6.html" class="view-button">View Project</a>
+    </div>
+  </div>
+  
+   <div class="card">
+    <img src="images/sram391.png" alt="Project 3 Image">
+    <div class="card-content">
+      <h3>4x4 SRAM Design (CE 391)</h3>
+      <p>Designed a 4x4-bit SRAM in 45nm CMOS; verified functionality and achieved 500 MHz operation.</p>
+      <a href="projects/project3.html" class="view-button">View Project</a>
+    </div>
+  </div>
+
+  </div>
+
+</section>
+
+<section id="education">
+  <h2 class="section-title">Education</h2>
+
+  <div class="education-entry">
+    <div class="degree-block">
+      <h3 class="degree-title">Master of Science in Electrical Engineering</h3>
+      <p class="degree-subtext">Northwestern University • 2026-2027</p>
+    </div>
+
+    <div class="degree-block">
+      <h3 class="degree-title">Bachelor of Science in Computer Engineering</h3>
+      <p class="degree-subtext">Northwestern University • 2023-2026</p>
+    </div>
+  </div>
+
+  <div class="courses">
+    <h4 class="course-title">Relevant Courses</h4>
+    <ul class="course-list-inline">
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/303.html" target="_blank">Advanced Digital Design (CE 303)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/391.html" target="_blank">CMOS VLSI Circuit Design (CE 391)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/computer-science/academics/courses/descriptions/213-20.html" target="_blank">Computer Systems in C & x86 Assembly (CS 213)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/357.html" target="_blank">Design Automation in VLSI (CE 357)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/224.html" target="_blank">Electromagnetism and Photonics (EE 224)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/221.html" target="_blank">Fundamentals of Circuits (EE 221)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/211.html" target="_blank">Fundamentals of Programming in C & C++ (CS 211)</a></li>
+
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/202.html" target="_blank">Introduction to Electrical Engineering (EE 202)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/203.html" target="_blank">Introduction to Computer Engineering (CE 203)</a></li>
+
+
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/395-495-magnet-spin.html" target="_blank">Magnetism and Spintronics: Fundamentals and Device Applications (EE 395/495)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/346.html" target="_blank">Microcontroller System Design (CE 346)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/329.html" target="_blank">The Art of Multicore Concurrent Programming (CE 329)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/395-495-nanophoton.html" target="_blank">Introduction to Nanophotonics and Plasmonics Science and Technology (EE 395/495)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/392.html" target="_blank">VLSI Systems Design Projects (CE 392)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/393-493.html" target="_blank">In Progress - Advanced Low Power Digital and Mixed-signal Integrated Circuit Design (CE 393/493)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/223.html" target="_blank">In Progress - Fundamentals of Solid State Engineering (EE 223)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/361.html" target="_blank">In Progress - Computer Architecture (CE 361)</a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>
+    Email:
+    <a id="email-link" href="mailto:canafacan2027@u.northwestern.edu">canafacan2027@u.northwestern.edu</a>
+    <button id="copy-email-btn" class="copy-button">Copy</button>
+    <span id="copy-confirmation" class="copy-confirmation">Copied!</span>
+  </p>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-left">
+    <p>© 2025 Can Afacan. All rights reserved.</p>
+  </div>
+  <div class="footer-right">
+    <a href="https://github.com/CanAfacan" target="_blank">
+      <img src="images/github.png" alt="GitHub" class="footer-icon" />
+    </a>
+    <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+      <img src="images/linkedin.jpg" alt="LinkedIn" class="footer-icon" />
+    </a>
+  </div>
+</footer>
+
+
+<script>
+  window.addEventListener('load', () => {
+    // Wait 2.5 seconds after page load, then fade out loader
+    setTimeout(() => {
+      const loader = document.getElementById('loader');
+      loader.style.transition = 'opacity 0.5s ease';
+      loader.style.opacity = 0;
+      setTimeout(() => loader.style.display = 'none', 500);
+    }, 2000); // <- Adjust this to change how long the animation shows
+  });
+</script>
+
+<script>
+  const nameText = "Welcome - I'm Can";
+  const bioText = "Aspiring VLSI/ASIC design engineer with a strong foundation in digital logic, analog circuit design, and semiconductor devices. Passionate about spintronics, unconventional architectures, and custom ASIC development. Experienced in logic design, analog design, and hands-on lab work through research and teaching roles.";
+
+
+  const nameTarget = document.getElementById("typed-text");
+  const bioTarget = document.getElementById("typed-bio");
+  const cursor1 = document.getElementById("cursor1");
+  const cursor2 = document.getElementById("cursor2");
+
+  let i = 0, j = 0;
+
+  function typeName() {
+    if (i < nameText.length) {
+      nameTarget.textContent += nameText.charAt(i);
+      i++;
+      setTimeout(typeName, 100);
+    } else {
+      cursor1.style.display = "none"; // Hide first cursor
+      cursor2.style.display = "inline-block"; // Show second
+      setTimeout(typeBio, 500);
+    }
+  }
+
+    function typeBio() {
+    if (j < bioText.length) {
+        bioTarget.textContent += bioText.charAt(j);
+        j++;
+        setTimeout(typeBio, 30);
+    } else {
+        cursor2.style.display = "none"; // hiding section cursor
+    }
+    }
+
+  window.addEventListener("load", () => {
+    cursor2.style.display = "none"; // Hide second cursor at start
+    setTimeout(typeName, 2200); // Match NMOS loader delay
+  });
+</script>
+
+<script>
+  document.getElementById("copy-email-btn").addEventListener("click", () => {
+    const email = "canafacan2027@u.northwestern.edu";
+    navigator.clipboard.writeText(email).then(() => {
+      const confirmation = document.getElementById("copy-confirmation");
+      confirmation.style.display = "inline";
+      setTimeout(() => {
+        confirmation.style.display = "none";
+      }, 1500);
+    });
+  });
+</script>
+
+<script>
+  const hexTicker = document.querySelector(".hex-ticker");
+  const hexCodes = [
+    "0x43", // C
+    "0x61", // a
+    "0x6E", // n
+    "0x20", // space
+    "0x41", // A
+    "0x66", // f
+    "0x61", // a
+    "0x63", // c
+    "0x61", // a
+    "0x6E"  // n
+  ];
+
+  let index = 0;
+  setInterval(() => {
+    hexTicker.textContent = hexCodes[index];
+    index = (index + 1) % hexCodes.length;
+  }, 800); // Adjust speed here if needed
+</script>
+
+<script>
+  const binaryDisplay = document.getElementById("binaryDisplay");
+  const text = "Can Afacan";
+  const binarySequence = text
+    .split("")
+    .map(char => char.charCodeAt(0).toString(2).padStart(8, "0"));
+
+  let currentIndex = 0;
+
+  function updateLEDs(binaryStr) {
+    binaryDisplay.innerHTML = ""; // Clear old LEDs
+    for (let bit of binaryStr) {
+      const dot = document.createElement("div");
+      dot.classList.add("led-dot");
+      if (bit === "1") dot.classList.add("on");
+      binaryDisplay.appendChild(dot);
+    }
+  }
+
+  setInterval(() => {
+    updateLEDs(binarySequence[currentIndex]);
+    currentIndex = (currentIndex + 1) % binarySequence.length;
+  }, 700); // adjust for blink speed
+</script>
+</body>
+</html>

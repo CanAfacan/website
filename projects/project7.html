@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project 7</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.png" type="image/png" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+    <div class="logo">
+        Can Afacan <div class="binary-led-row" id="binaryDisplay"></div>
+    </div>
+
+    <div class="nav-right">
+        <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+        <a href="https://github.com/CanAfacan" target="_blank">
+            <img src="../images/github.png" alt="GitHub" class="nav-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+            <img src="../images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
+        </a>
+        </div>
+    </div>
+    </nav>
+  </header>
+
+<section style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
+  <h1 style="margin-bottom: 1.5rem;">BrailleGrid: Affordable Braille Display for Web Accessibility</h1>
+
+  <p style="margin-bottom: 1.5rem;">
+    BrailleGrid is a low-cost, open-source Braille display device aimed at improving digital accessibility for individuals with visual impairments. Commercial Braille displays can cost between $3,500 and $15,000, creating a major barrier to access. BrailleGrid addresses this by combining browser-based content translation with an electromechanical tactile display to deliver web content in Braille through custom hardware and a browser extension.
+  </p>
+
+  <p style="margin-bottom: 1.5rem;">
+    On the software side, the solution leverages a browser extension written in JavaScript to scrape and summarize webpage text. Using the OpenAI API, it condenses this text into digestible chunks before translating it into Braille characters. A Go-based terminal user interface (TUI) acts as a server that receives post requests and communicates with the physical display over serial.
+  </p>
+
+  <p style="margin-bottom: 1.5rem;">
+    The hardware system consists of solenoid-actuated Braille cells controlled by an Arduino and shift registers. Each Braille character is represented by a 6-dot configuration; to reduce I/O pin overhead, shift registers are used to scan rows and columns. This enables control of 30 solenoids (enough for 5 characters) using just 6 microcontroller pins, improving scalability and reducing complexity.
+  </p>
+
+  <p style="margin-bottom: 1.5rem;">
+    This project received the most innovative project award in IEEE Northwestern Technical Showcase 2024.
+  </p>
+
+<p style="margin-top: 2rem; margin-bottom: 1.5rem;">
+  GitHub Repository:
+  <a href="https://github.com/mimiZhang130/braille-grid" target="_blank" style="color: var(--accent); font-weight: 500; text-decoration: underline;">
+    https://github.com/mimiZhang130/braille-grid
+  </a>
+</p>
+
+
+  <div class="image-grid">
+    <figure>
+      <div class="image-wrapper">
+        <img src="../images/brailleteam.jpg" alt="Braille Display Demo Image" />
+      </div>
+      <figcaption>Figure 1: Team</figcaption>
+    </figure>
+  </div>
+
+</section>
+
+<h2 style="margin-top: 2rem; text-align: center;">Project Report</h2>
+<div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem;">
+  <iframe 
+    src="project7.pdf" 
+    width="100%" 
+    height="600px" 
+    style="max-width: 900px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 1rem;">
+  </iframe>
+  <p>
+    <a href="project2.pdf" download class="view-button">Download Full Report (PDF)</a>
+  </p>
+
+  <p style="margin-top: 2rem;">
+    <a href="../index.html" style="color: var(--accent); font-weight: 600;">← Back to Home</a>
+  </p>
+</section>
+
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <p>© 2025 Can Afacan. All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/CanAfacan" target="_blank">
+        <img src="../images/github.png" alt="GitHub" class="footer-icon" />
+      </a>
+      <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+        <img src="../images/linkedin.jpg" alt="LinkedIn" class="footer-icon" />
+      </a>
+    </div>
+  </footer>
+
+  <style>
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Exactly 2 columns */
+  gap: 2rem;
+}
+
+
+    figure {
+      margin: 0;
+      text-align: center;
+    }
+
+    .image-wrapper {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    figcaption {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--subtle);
+    }
+  </style>
+
+<script>
+  const hexTicker = document.querySelector(".hex-ticker");
+  const hexCodes = [
+    "0x43", // C
+    "0x61", // a
+    "0x6E", // n
+    "0x20", // space
+    "0x41", // A
+    "0x66", // f
+    "0x61", // a
+    "0x63", // c
+    "0x61", // a
+    "0x6E"  // n
+  ];
+
+  let index = 0;
+  setInterval(() => {
+    hexTicker.textContent = hexCodes[index];
+    index = (index + 1) % hexCodes.length;
+  }, 800); // Adjust speed here if needed
+</script>
+
+<script>
+  const binaryDisplay = document.getElementById("binaryDisplay");
+  const text = "Can Afacan";
+  const binarySequence = text
+    .split("")
+    .map(char => char.charCodeAt(0).toString(2).padStart(8, "0"));
+
+  let currentIndex = 0;
+
+  function updateLEDs(binaryStr) {
+    binaryDisplay.innerHTML = ""; // Clear old LEDs
+    for (let bit of binaryStr) {
+      const dot = document.createElement("div");
+      dot.classList.add("led-dot");
+      if (bit === "1") dot.classList.add("on");
+      binaryDisplay.appendChild(dot);
+    }
+  }
+
+  setInterval(() => {
+    updateLEDs(binarySequence[currentIndex]);
+    currentIndex = (currentIndex + 1) % binarySequence.length;
+  }, 700); // adjust for blink speed
+</script>
+
+
+</body>
+</html>

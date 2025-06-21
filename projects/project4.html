@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project 4</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.png" type="image/png" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+    <div class="logo">
+        Can Afacan <div class="binary-led-row" id="binaryDisplay"></div>
+    </div>
+
+    <div class="nav-right">
+        <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+        <a href="https://github.com/CanAfacan" target="_blank">
+            <img src="../images/github.png" alt="GitHub" class="nav-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+            <img src="../images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
+        </a>
+        </div>
+    </div>
+    </nav>
+  </header>
+<section style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
+  <h1 style="margin-bottom: 1rem;">Real-Time Magnetic Field Scanner</h1>
+
+  <p style="margin-bottom: 2rem;">
+    Designed and built a joystick-controlled magnetic field scanner equipped with an Anisotropic Magneto-Resistive (AMR) sensor and Hall-effect trigger. This project involved the integration of real-time embedded systems, mechanical joystick control, and spatial data acquisition which enabled 3D magnetic field mapping.
+  </p>
+
+  <p style="margin-bottom: 2rem;">
+    The system featured automated grid scanning, trigger-based sampling, and a Python visualization tool for live rendering of spatial magnetic data. Using a Hall-effect sensor to synchronize scans and an AMR sensor for fine-resolution field measurements, the device mapped magnetic flux distributions with millimeter precision.
+  </p>
+
+  <p style="margin-bottom: 2rem;">
+    The project was awarded <strong>3rd place</strong> in the Bosch SensorTec competition at the <strong>MMM-Intermag 2025 Conference</strong>, showcasing real-time magnetometry capabilities in a portable setup. This effort emphasized multidisciplinary integration across embedded systems, signal processing, and visualization software.
+  </p>
+
+  <p style="margin-bottom: 2rem;">
+    GitHub Repository: 
+    <a href="https://github.com/CanAfacan/Magnetic-Field-Scanner-Project" target="_blank" style="color: var(--accent); font-weight: 500; text-decoration: underline;">
+      https://github.com/CanAfacan/Magnetic-Field-Scanner-Project
+    </a>
+  </p>
+
+  <figure style="text-align: center; margin-top: 2rem;">
+    <div class="image-wrapper" style="margin: auto; width: 80%; max-width: 600px;">
+      <img src="../images/intermag2025.png" alt="Magnetic Field Scanner" style="width: 100%; border-radius: 8px;" />
+    </div>
+    <figcaption style="margin-top: 0.5rem; font-size: 0.95rem; color: var(--subtle);">
+      Figure 1: Scanner system used in 3D magnetic visualization
+    </figcaption>
+  </figure>
+</section>
+
+<section style="padding: 2rem 2rem; max-width: 900px; margin: auto;">
+  <h2 style="margin-top: 2rem;">Project Report</h2>
+  <iframe 
+    src="project4.pdf" 
+    width="100%" 
+    height="600px" 
+    style="border: 1px solid #ccc; border-radius: 8px; margin-bottom: 1rem;">
+  </iframe>
+
+  <p>
+    <a href="project4.pdf" download class="view-button">Download Full Report (PDF)</a>
+  </p>
+
+  <p style="margin-top: 2rem;">
+    <a href="../index.html" style="color: var(--accent); font-weight: 600;">← Back to Home</a>
+  </p>
+</section>
+
+
+  <!-- Footer (reused) -->
+  <footer class="site-footer">
+    <div class="footer-left">
+      <p>© 2025 Can Afacan. All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/CanAfacan" target="_blank">
+        <img src="../images/github.png" alt="GitHub" class="footer-icon" />
+      </a>
+      <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+        <img src="../images/linkedin.jpg" alt="LinkedIn" class="footer-icon" />
+      </a>
+    </div>
+  </footer>
+
+
+  <script>
+  const hexTicker = document.querySelector(".hex-ticker");
+  const hexCodes = [
+    "0x43", // C
+    "0x61", // a
+    "0x6E", // n
+    "0x20", // space
+    "0x41", // A
+    "0x66", // f
+    "0x61", // a
+    "0x63", // c
+    "0x61", // a
+    "0x6E"  // n
+  ];
+
+  let index = 0;
+  setInterval(() => {
+    hexTicker.textContent = hexCodes[index];
+    index = (index + 1) % hexCodes.length;
+  }, 800); // Adjust speed here if needed
+</script>
+
+<script>
+  const binaryDisplay = document.getElementById("binaryDisplay");
+  const text = "Can Afacan";
+  const binarySequence = text
+    .split("")
+    .map(char => char.charCodeAt(0).toString(2).padStart(8, "0"));
+
+  let currentIndex = 0;
+
+  function updateLEDs(binaryStr) {
+    binaryDisplay.innerHTML = ""; // Clear old LEDs
+    for (let bit of binaryStr) {
+      const dot = document.createElement("div");
+      dot.classList.add("led-dot");
+      if (bit === "1") dot.classList.add("on");
+      binaryDisplay.appendChild(dot);
+    }
+  }
+
+  setInterval(() => {
+    updateLEDs(binarySequence[currentIndex]);
+    currentIndex = (currentIndex + 1) % binarySequence.length;
+  }, 700); // adjust for blink speed
+</script>
+
+</body>
+</html>

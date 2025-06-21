@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project 1</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.png" type="image/png" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+    <div class="logo">
+        Can Afacan <div class="binary-led-row" id="binaryDisplay"></div>
+    </div>
+
+    <div class="nav-right">
+        <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+        <a href="https://github.com/CanAfacan" target="_blank">
+            <img src="../images/github.png" alt="GitHub" class="nav-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+            <img src="../images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
+        </a>
+        </div>
+    </div>
+    </nav>
+  </header>
+
+
+  <!-- Project Section -->
+  <section style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
+    <h1 style="margin-bottom: 1.5rem;">Logic-in-Memory Non-Volatile FPGA Design Using Magnetic Tunnel Junctions (Computer Engineering Capstone Project - CE 392)</h1>
+
+    <p style="margin-bottom: 2rem;">
+      This project explored the integration of Magnetic Tunnel Junctions (MTJs) into FPGA logic cells to enable non-volatile, in-memory computing: a promising direction for future high-performance, energy-efficient systems. By embedding MTJs directly into configurable logic blocks, we eliminated the need for separate memory and computation modules, resulting in lower latency and improved energy efficiency.
+    </p>
+
+    <p style="margin-bottom: 2rem;">
+      The work was completed using a full-custom digital design flow with the 45nm NCSU FreePDK. Starting from schematic-level simulation, we progressed through layout design, parasitic extraction, and post-layout simulation. Our design featured a 4-input multiplexer integrated with MTJ-based memory latches and optimized clock gating structures. Extensive simulations ensured the circuit maintained correct functionality and acceptable performance even with spintronic components modeled in a primarily CMOS environment.
+    </p>
+
+    <p style="margin-bottom: 2rem;">
+      The final design met our area and power goals while achieving robust performance during write and read cycles. Additionally, we developed custom simulation waveforms, testbenches, and behavioral models to support verification of logic-in-memory concepts. This work provides a scalable foundation for future research on integrating non-traditional memory into reconfigurable architectures, laying the groundwork for a new generation of energy-aware FPGAs.
+    </p>
+
+    <!-- Image Grid -->
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 2rem 0;">
+      <div>
+        <img src="../images/vlsi392.png" alt="Team" style="width: 100%; height: 230px; object-fit: cover; border-radius: 8px;">
+        <p style="text-align: center; margin-top: 0.5rem; font-size: 0.95rem; color: var(--subtle);">Figure 1: Full Layout</p>
+      </div>
+      <div>
+        <img src="../images/schematic392.png" alt="Schematic" style="width: 100%; height: 230px; object-fit: cover; border-radius: 8px;">
+        <p style="text-align: center; margin-top: 0.5rem; font-size: 0.95rem; color: var(--subtle);">Figure 2: Final Simulation Schematic</p>
+      </div>
+      <div>
+        <img src="../images/9clb.png" alt="Layout" style="width: 100%; height: 230px; object-fit: cover; border-radius: 8px;">
+        <p style="text-align: center; margin-top: 0.5rem; font-size: 0.95rem; color: var(--subtle);">Figure 3: 3x3 CLB Layout</p>
+      </div>
+      <div>
+        <img src="../images/project1-waveforms.png" alt="Waveforms" style="width: 100%; height: 230px; object-fit: cover; border-radius: 8px;">
+        <p style="text-align: center; margin-top: 0.5rem; font-size: 0.95rem; color: var(--subtle);">Figure 4: Post-Layout Simulation Results</p>
+      </div>
+    </div>
+
+    <!-- PDF preview -->
+    <h2 style="margin-top: 2rem;">Project Report</h2>
+    <iframe 
+      src="project1.pdf" 
+      width="100%" 
+      height="600px" 
+      style="border: 1px solid #ccc; border-radius: 8px; margin-bottom: 1rem;">
+    </iframe>
+
+    <p>
+      <a href="project1.pdf" download class="view-button">Download Full Report (PDF)</a>
+    </p>
+
+    <p style="margin-top: 2rem;">
+      <a href="../index.html" style="color: var(--accent); font-weight: 600;">← Back to Home</a>
+    </p>
+  </section>
+
+  <!-- Footer (reused) -->
+  <footer class="site-footer">
+    <div class="footer-left">
+      <p>© 2025 Can Afacan. All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/CanAfacan" target="_blank">
+        <img src="../images/github.png" alt="GitHub" class="footer-icon" />
+      </a>
+      <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+        <img src="../images/linkedin.jpg" alt="LinkedIn" class="footer-icon" />
+      </a>
+    </div>
+  </footer>
+
+
+  <script>
+  const hexTicker = document.querySelector(".hex-ticker");
+  const hexCodes = [
+    "0x43", // C
+    "0x61", // a
+    "0x6E", // n
+    "0x20", // space
+    "0x41", // A
+    "0x66", // f
+    "0x61", // a
+    "0x63", // c
+    "0x61", // a
+    "0x6E"  // n
+  ];
+
+  let index = 0;
+  setInterval(() => {
+    hexTicker.textContent = hexCodes[index];
+    index = (index + 1) % hexCodes.length;
+  }, 800); // Adjust speed here if needed
+</script>
+
+<script>
+  const binaryDisplay = document.getElementById("binaryDisplay");
+  const text = "Can Afacan";
+  const binarySequence = text
+    .split("")
+    .map(char => char.charCodeAt(0).toString(2).padStart(8, "0"));
+
+  let currentIndex = 0;
+
+  function updateLEDs(binaryStr) {
+    binaryDisplay.innerHTML = ""; // Clear old LEDs
+    for (let bit of binaryStr) {
+      const dot = document.createElement("div");
+      dot.classList.add("led-dot");
+      if (bit === "1") dot.classList.add("on");
+      binaryDisplay.appendChild(dot);
+    }
+  }
+
+  setInterval(() => {
+    updateLEDs(binarySequence[currentIndex]);
+    currentIndex = (currentIndex + 1) % binarySequence.length;
+  }, 700); // adjust for blink speed
+</script>
+
+</body>
+</html>

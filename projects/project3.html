@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project 3</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.png" type="image/png" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+    <div class="logo">
+        Can Afacan <div class="binary-led-row" id="binaryDisplay"></div>
+    </div>
+
+    <div class="nav-right">
+        <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-icons">
+        <a href="https://github.com/CanAfacan" target="_blank">
+            <img src="../images/github.png" alt="GitHub" class="nav-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+            <img src="../images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
+        </a>
+        </div>
+    </div>
+    </nav>
+  </header>
+
+
+<section style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
+  <h1 style="margin-bottom: 1rem;">4x4 SRAM Bank Design (Final Assignment of CMOS VLSI Circuit Design - CE 391)</h1>
+
+  <p style="margin-bottom: 2rem;">
+    This project involved the schematic design, layout, and verification of a 4x4 SRAM array using 6T SRAM cells, integrated with essential support circuits including write drivers, clocked sense amplifiers, and bitline conditioners. Each circuit component was first designed and tested individually to ensure correct functionality and layout integrity through LVS and DRC checks.
+  </p>
+
+  <p style="margin-bottom: 2rem;">
+    The SRAM cell was implemented using custom sized transistors to balance stability and writeability, verified through a series of waveform simulations and post-layout extraction. A custom-designed clocked sense amplifier and write circuitry enabled correct data flow, while the bitline conditioner regulated voltage swings to optimize energy efficiency. All components were stitched together to form the SRAM Bank, with emphasis on minimal area usage.
+  </p>
+
+  <p style="margin-bottom: 2rem;">
+    The complete system was verified at both schematic and layout levels, and simulations demonstrated correct sequential read/write behavior under clocked control at 500 MHz. Energy consumption was analyzed during read and write operations, and failure behavior was explored under increased operating frequencies up to 600 MHz. Post-layout parasitic simulations confirmed realistic performance metrics and helped identify timing bottlenecks due to sense amplifier delays.
+  </p>
+
+  <div class="image-grid">
+    <figure>
+      <div class="image-wrapper square">
+        <img src="../images/sram391.png" alt="SRAM Layout" />
+      </div>
+      <figcaption>Figure 1: Layout of the Full 4x4 SRAM Bank</figcaption>
+    </figure>
+    <figure>
+      <div class="image-wrapper square">
+        <img src="../images/waveform391.png" alt="SRAM Simulation Waveform" />
+      </div>
+      <figcaption>Figure 2: Post-Layout Simulation Waveform Showing Read/Write Operation (Layout vs Schematic)</figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .image-wrapper.square {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--subtle);
+    text-align: center;
+  }
+</style>
+
+
+  <!-- Footer (reused) -->
+  <footer class="site-footer">
+    <div class="footer-left">
+      <p>© 2025 Can Afacan. All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/CanAfacan" target="_blank">
+        <img src="../images/github.png" alt="GitHub" class="footer-icon" />
+      </a>
+      <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+        <img src="../images/linkedin.jpg" alt="LinkedIn" class="footer-icon" />
+      </a>
+    </div>
+  </footer>
+
+
+  <script>
+  const hexTicker = document.querySelector(".hex-ticker");
+  const hexCodes = [
+    "0x43", // C
+    "0x61", // a
+    "0x6E", // n
+    "0x20", // space
+    "0x41", // A
+    "0x66", // f
+    "0x61", // a
+    "0x63", // c
+    "0x61", // a
+    "0x6E"  // n
+  ];
+
+  let index = 0;
+  setInterval(() => {
+    hexTicker.textContent = hexCodes[index];
+    index = (index + 1) % hexCodes.length;
+  }, 800); // Adjust speed here if needed
+</script>
+
+<script>
+  const binaryDisplay = document.getElementById("binaryDisplay");
+  const text = "Can Afacan";
+  const binarySequence = text
+    .split("")
+    .map(char => char.charCodeAt(0).toString(2).padStart(8, "0"));
+
+  let currentIndex = 0;
+
+  function updateLEDs(binaryStr) {
+    binaryDisplay.innerHTML = ""; // Clear old LEDs
+    for (let bit of binaryStr) {
+      const dot = document.createElement("div");
+      dot.classList.add("led-dot");
+      if (bit === "1") dot.classList.add("on");
+      binaryDisplay.appendChild(dot);
+    }
+  }
+
+  setInterval(() => {
+    updateLEDs(binarySequence[currentIndex]);
+    currentIndex = (currentIndex + 1) % binarySequence.length;
+  }, 700); // adjust for blink speed
+</script>
+
+</body>
+</html>
