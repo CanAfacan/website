@@ -296,7 +296,7 @@
       loader.style.transition = 'opacity 0.5s ease';
       loader.style.opacity = 0;
       setTimeout(() => loader.style.display = 'none', 500);
-    }, 2000); // <- Adjust this to change how long the animation shows
+    }, 2000); 
   });
 </script>
 
@@ -318,8 +318,8 @@
       i++;
       setTimeout(typeName, 100);
     } else {
-      cursor1.style.display = "none"; // Hide first cursor
-      cursor2.style.display = "inline-block"; // Show second
+      cursor1.style.display = "none"; // Hide cursor
+      cursor2.style.display = "inline-block"; // second
       setTimeout(typeBio, 500);
     }
   }
@@ -356,23 +356,23 @@
 <script>
   const hexTicker = document.querySelector(".hex-ticker");
   const hexCodes = [
-    "0x43", // C
-    "0x61", // a
-    "0x6E", // n
-    "0x20", // space
-    "0x41", // A
-    "0x66", // f
-    "0x61", // a
-    "0x63", // c
-    "0x61", // a
-    "0x6E"  // n
+    "0x43", 
+    "0x61",
+    "0x6E", 
+    "0x20", 
+    "0x41", 
+    "0x66",
+    "0x61", 
+    "0x63",
+    "0x61", 
+    "0x6E"  
   ];
 
   let index = 0;
   setInterval(() => {
     hexTicker.textContent = hexCodes[index];
     index = (index + 1) % hexCodes.length;
-  }, 800); // Adjust speed here if needed
+  }, 800); 
 </script>
 
 <script>
@@ -397,7 +397,7 @@
   setInterval(() => {
     updateLEDs(binarySequence[currentIndex]);
     currentIndex = (currentIndex + 1) % binarySequence.length;
-  }, 700); // adjust for blink speed
+  }, 700); // blink speed
 </script>
 </body>
 </html>
