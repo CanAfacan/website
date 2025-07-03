@@ -73,13 +73,16 @@
         <figcaption>Figure 4: Version 1.1: Partially Assembled PCB</figcaption>
       </figure>
     </div>
-          <figure>
-        <div class="image-wrapper">
-          <img src="../images/PCBv2.png" alt="Physical Board" />
-        </div>
-        <figcaption>Figure 5: Version 2.1: PCB Board</figcaption>
-      </figure>
-    </div>
+
+<figure style="margin-top: 2rem;">
+  <div class="image-wrapper custom-size">
+    <img src="../images/PCBv2.png" alt="Physical Board" />
+  </div>
+  <figcaption>Figure 5: Version 2.1: PCB Board</figcaption>
+</figure>
+
+
+  
 
     <a href="../index.html" style="color: var(--accent); font-weight: 600; display: block; margin-top: 2rem;">← Back to Home</a>
   </section>
@@ -100,6 +103,20 @@
   </footer>
 
   <style>
+
+    .image-wrapper.custom-size {
+      aspect-ratio: auto;
+      height: auto;
+      width: 100%;
+      max-width: 600px; 
+      margin: auto;
+    }
+
+    .image-wrapper.custom-size img {
+      object-fit: contain;
+      height: auto;
+    }
+
     .image-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
