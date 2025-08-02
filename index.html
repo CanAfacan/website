@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,10 +80,6 @@
     <div class="logo">
         Can Afacan <div class="binary-led-row" id="binaryDisplay"></div>
     </div>
-    
-    <button class="nav-toggle" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </button>
 
     <div class="nav-right">
         <ul class="nav-links">
@@ -387,26 +384,5 @@
     currentIndex = (currentIndex + 1) % binarySequence.length;
   }, 700); // blink speed
 </script>
-
-
-<script>
-
-  const navToggle = document.querySelector('.nav-toggle');
-  const navLinks  = document.querySelector('.nav-links');
-
-
-  if (navToggle && navLinks) {
-
-    
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-
-    navLinks.addEventListener('click', e => {
-      if (e.target.tagName === 'A') navLinks.classList.remove('open');
-    });
-  }
-</script>
-
 </body>
 </html>
