@@ -9,30 +9,38 @@
 </head>
 <body>
 
-  <header>
-    <nav class="navbar">
+<header>
+  <nav class="navbar">
     <div class="logo">
-        Can Afacan <div class="binary-led-row" id="binaryDisplay"></div>
+      Can Afacan
+      <div class="binary-led-row" id="binaryDisplay"></div>
     </div>
 
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <div class="nav-right">
-        <ul class="nav-links">
+      <ul class="nav-links">
         <li><a href="../index.html#experience">Experience</a></li>
         <li><a href="../index.html#projects">Projects</a></li>
         <li><a href="../index.html#education">Education</a></li>
         <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-        <div class="nav-icons">
+      </ul>
+      <div class="nav-icons">
         <a href="https://github.com/CanAfacan" target="_blank">
-            <img src="../images/github.png" alt="GitHub" class="nav-icon" />
+          <img src="../images/github.png" alt="GitHub" class="nav-icon" />
         </a>
         <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
-            <img src="../images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
+          <img src="../images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
         </a>
-        </div>
+      </div>
     </div>
-    </nav>
-  </header>
+  </nav>
+</header>
+
 
   <section style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
   <h1 style="margin-bottom: 1rem;">IEEE Treasurer – Northwestern Student Chapter</h1>
@@ -154,6 +162,22 @@
     updateLEDs(binarySequence[currentIndex]);
     currentIndex = (currentIndex + 1) % binarySequence.length;
   }, 700); // adjust for blink speed
+</script>
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navRight  = document.querySelector('.nav-right');
+
+  if (navToggle && navRight) {
+    navToggle.addEventListener('click', () => {
+      navRight.classList.toggle('open');
+    });
+
+    navRight.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        navRight.classList.remove('open');
+      }
+    });
+  }
 </script>
 
 </body>

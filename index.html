@@ -78,30 +78,42 @@
     }
     </style>
 
-  <header>
-    <nav class="navbar">
+<header>
+  <nav class="navbar">
     <div class="logo">
-        Can Afacan <div class="binary-led-row" id="binaryDisplay"></div>
+      Can Afacan
+      <div class="binary-led-row" id="binaryDisplay"></div>
     </div>
 
+    <!-- 3-line hamburger button (for mobile only) -->
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <div class="nav-right">
-        <ul class="nav-links">
+      <ul class="nav-links">
+        <!-- same links you had before -->
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="nav-icons">
+      </ul>
+
+      <div class="nav-icons">
+        <!-- image icons, with the correct paths -->
         <a href="https://github.com/CanAfacan" target="_blank">
-            <img src="images/github.png" alt="GitHub" class="nav-icon" />
+          <img src="images/github.png" alt="GitHub" class="nav-icon" />
         </a>
         <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
-            <img src="images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
+          <img src="images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
         </a>
-        </div>
+      </div>
     </div>
-    </nav>
-  </header>
+  </nav>
+</header>
+
 
 <section id="hero" class="hero">
   <div class="hero-container">
@@ -386,5 +398,26 @@
     currentIndex = (currentIndex + 1) % binarySequence.length;
   }, 700); // blink speed
 </script>
+
+
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navRight  = document.querySelector('.nav-right');
+
+  if (navToggle && navRight) {
+    navToggle.addEventListener('click', () => {
+      navRight.classList.toggle('open');
+    });
+
+    // Close menu when a link is tapped (mobile UX)
+    navRight.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        navRight.classList.remove('open');
+      }
+    });
+  }
+</script>
+
 </body>
 </html>
