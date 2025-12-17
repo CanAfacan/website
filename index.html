@@ -16,7 +16,7 @@
     <div id="loader">
     <div class="nmos-animation">
         <svg viewBox="0 0 500 300" width="240" height="160" aria-label="NMOS transistor schematic">
-        <!-- Stepped conduction path: Source (left) ➜ bump ➜ Drain (right) -->
+        <!-- Stepped conduction path: Source (left) - bump - Drain (right) -->
         <!-- Source lead (left horizontal, extended to match drain) -->
         <line x1="20"  y1="240" x2="140" y2="240" stroke="black" stroke-width="6" />
         <!-- Up step -->
@@ -85,7 +85,7 @@
       <div class="binary-led-row" id="binaryDisplay"></div>
     </a>
 
-    <!-- 3-line hamburger button (for mobile only) -->
+    <!-- 3 line hamburger-->
     <button class="nav-toggle" type="button" aria-label="Toggle navigation">
       <span></span>
       <span></span>
@@ -278,33 +278,52 @@
     </div>
   </div>
 
-  <div class="courses">
-    <h4 class="course-title">Relevant Courses</h4>
+<div class="courses">
+  <h4 class="course-title">Relevant Courses</h4>
+
+  <!-- Group 1 -->
+  <div class="course-group">
+    <h5 class="course-group-title">Hardware Design (Digital + VLSI + FPGA)</h5>
     <ul class="course-list-inline">
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/303.html" target="_blank"> Advanced Digital Design (CE 303) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/391.html" target="_blank"> CMOS VLSI Circuit Design (CE 391) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/computer-science/academics/courses/descriptions/213-20.html" target="_blank"> Computer Systems in C & x86 Assembly (CS 213) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/357.html" target="_blank"> Design Automation in VLSI (CE 357) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/224.html" target="_blank"> Electromagnetism and Photonics (EE 224) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/221.html" target="_blank"> Fundamentals of Circuits (EE 221) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/211.html" target="_blank"> Fundamentals of Programming in C & C++ (CS 211) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/202.html" target="_blank"> Introduction to Electrical Engineering (EE 202) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/203.html" target="_blank"> Introduction to Computer Engineering (CE 203) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/395-495-magnet-spin.html" target="_blank"> Magnetism and Spintronics: Fundamentals and Device Applications (EE 395/495) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/346.html" target="_blank"> Microcontroller System Design (CE 346) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/329.html" target="_blank"> The Art of Multicore Concurrent Programming (CE 329) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/395-495-nanophoton.html" target="_blank"> Introduction to Nanophotonics and Plasmonics Science and Technology (EE 395/495) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/392.html" target="_blank"> VLSI Systems Design Projects (CE 392) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/393-493.html" target="_blank"> Advanced Low Power Digital and Mixed-signal Integrated Circuit Design (CE 493) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/223.html" target="_blank"> Fundamentals of Solid State Engineering (EE 223) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/361.html" target="_blank"> Computer Architecture (CE 361) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/375-475.html" target="_blank"> Machine Learning: Foundations, Applications, and Algorithms (EE 375) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/387.html" target="_blank"> In Progress - Real-Time Digital Systems Design and Verification with FPGAs (SystemVerilog) (EE 387) </a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/388.html" target="_blank"> In Progress - Nanotechnology (EE 388)</a></li>
-      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/205.html" target="_blank"> In Progress - Fundamentals of Computer System Software (ARM Assembly) (CE 205) </a></li>
-   
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/203.html" target="_blank" rel="noopener noreferrer">Introduction to Computer Engineering (CE 203)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/303.html" target="_blank" rel="noopener noreferrer">Advanced Digital Design (CE 303)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/346.html" target="_blank" rel="noopener noreferrer">Microcontroller System Design (CE 346)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/357.html" target="_blank" rel="noopener noreferrer">Design Automation in VLSI (CE 357)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/391.html" target="_blank" rel="noopener noreferrer">CMOS VLSI Circuit Design (CE 391)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/392.html" target="_blank" rel="noopener noreferrer">VLSI Systems Design Projects (CE 392)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/393-493.html" target="_blank" rel="noopener noreferrer">Advanced Low Power Digital and Mixed-signal Integrated Circuit Design (CE 493)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/387.html" target="_blank" rel="noopener noreferrer">In Progress - Real-Time Digital Systems Design and Verification with FPGAs (SystemVerilog) (EE 387)</a></li>
     </ul>
   </div>
+
+  <!-- Group 2 -->
+  <div class="course-group">
+    <h5 class="course-group-title">Computer Systems and Software</h5>
+    <ul class="course-list-inline">
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/211.html" target="_blank" rel="noopener noreferrer">Fundamentals of Programming in C &amp; C++ (CS 211)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/computer-science/academics/courses/descriptions/213-20.html" target="_blank" rel="noopener noreferrer">Computer Systems in C &amp; x86 Assembly (CS 213)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/205.html" target="_blank" rel="noopener noreferrer">In Progress - Fundamentals of Computer System Software (ARM Assembly) (CE 205)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/361.html" target="_blank" rel="noopener noreferrer">Computer Architecture (CE 361)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/329.html" target="_blank" rel="noopener noreferrer">The Art of Multicore Concurrent Programming (CE 329)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/375-475.html" target="_blank" rel="noopener noreferrer">Machine Learning: Foundations, Applications, and Algorithms (EE 375)</a></li>
+    </ul>
+  </div>
+
+  <!-- Group 3 -->
+  <div class="course-group">
+    <h5 class="course-group-title">Devices, Circuits, and Physics</h5>
+    <ul class="course-list-inline">
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/202.html" target="_blank" rel="noopener noreferrer">Introduction to Electrical Engineering (EE 202)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/221.html" target="_blank" rel="noopener noreferrer">Fundamentals of Circuits (EE 221)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/223.html" target="_blank" rel="noopener noreferrer">Fundamentals of Solid State Engineering (EE 223)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/224.html" target="_blank" rel="noopener noreferrer">Electromagnetism and Photonics (EE 224)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/395-495-magnet-spin.html" target="_blank" rel="noopener noreferrer">Magnetism and Spintronics: Fundamentals and Device Applications (EE 395/495)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/395-495-nanophoton.html" target="_blank" rel="noopener noreferrer">Introduction to Nanophotonics and Plasmonics Science and Technology (EE 395/495)</a></li>
+      <li><a href="https://www.mccormick.northwestern.edu/electrical-computer/academics/courses/descriptions/388.html" target="_blank" rel="noopener noreferrer">In Progress - Nanotechnology (EE 388)</a></li>
+    </ul>
+  </div>
+</div>
+
 </section>
 
 <section id="contact">
