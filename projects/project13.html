@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RV32IM</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.png" type="image/png" />
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <a class="logo" href="#top" aria-label="Back to top">
+      <span>Can Afacan</span>
+      <div class="binary-led-row" id="binaryDisplay"></div>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#education">Education</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-icons">
+        <a href="https://github.com/CanAfacan" target="_blank">
+          <img src="../images/github.png" alt="GitHub" class="nav-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+          <img src="../images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
+  <h1 style="margin-bottom: 1.5rem;">
+    R-2R DAC Implementation and Power Analysis 
+  </h1>
+
+  <p style="margin-bottom: 2rem;">
+    This project is currently in progress. I am implementing an R-2R DAC and designing power simulations to see if power consumption metrics meet CHES 2024 assumptions and if a side-channel attacker can infer quantum circuits if this DAC was to be in a quantum computer controller.  
+  </p>
+
+  <div class="image-grid">
+    <figure>
+      <div class="image-wrapper">
+        <img src="../images/dac.png"
+             alt="Layout" />
+      </div>
+      <figcaption>Figure 1: Current Unfinished Layout </figcaption>
+    </figure>
+  </div>
+
+  <p style="margin-top: 2rem;">
+    <a href="../index.html" style="color: var(--accent); font-weight: 600;">← Back to Home</a>
+  </p>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-left">
+    <p>© 2025 Can Afacan. All rights reserved.</p>
+  </div>
+  <div class="footer-right">
+    <a href="https://github.com/CanAfacan" target="_blank">
+      <img src="../images/github.png" alt="GitHub" class="footer-icon" />
+    </a>
+    <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
+      <img src="../images/linkedin.jpg" alt="LinkedIn" class="footer-icon" />
+    </a>
+  </div>
+</footer>
+
+<style>
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  figure {
+    margin: 0;
+    text-align: center;
+  }
+
+  .image-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--subtle);
+  }
+</style>
+
+<script>
+  // Only run hex ticker if it exists on this page
+  const hexTicker = document.querySelector(".hex-ticker");
+  if (hexTicker) {
+    const hexCodes = [
+      "0x43", // C
+      "0x61", // a
+      "0x6E", // n
+      "0x20", // space
+      "0x41", // A
+      "0x66", // f
+      "0x61", // a
+      "0x63", // c
+      "0x61", // a
+      "0x6E"  // n
+    ];
+
+    let index = 0;
+    setInterval(() => {
+      hexTicker.textContent = hexCodes[index];
+      index = (index + 1) % hexCodes.length;
+    }, 800);
+  }
+</script>
+
+<script>
+  const binaryDisplay = document.getElementById("binaryDisplay");
+  const text = "Can Afacan";
+  const binarySequence = text
+    .split("")
+    .map(char => char.charCodeAt(0).toString(2).padStart(8, "0"));
+
+  let currentIndex = 0;
+
+  function updateLEDs(binaryStr) {
+    if (!binaryDisplay) return;
+    binaryDisplay.innerHTML = "";
+    for (let bit of binaryStr) {
+      const dot = document.createElement("div");
+      dot.classList.add("led-dot");
+      if (bit === "1") dot.classList.add("on");
+      binaryDisplay.appendChild(dot);
+    }
+  }
+
+  if (binaryDisplay) {
+    setInterval(() => {
+      updateLEDs(binarySequence[currentIndex]);
+      currentIndex = (currentIndex + 1) % binarySequence.length;
+    }, 700);
+  }
+</script>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navRight  = document.querySelector('.nav-right');
+
+  if (navToggle && navRight) {
+    navToggle.addEventListener('click', () => {
+      navRight.classList.toggle('open');
+    });
+
+    navRight.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        navRight.classList.remove('open');
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
