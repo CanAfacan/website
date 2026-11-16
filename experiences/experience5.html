@@ -1,131 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Teaching Assistantship - CE 203</title>
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="icon" href="../favicon.png" type="image/png" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Can Afacan’s work on Arm’s Source Team evaluating standard cells for low-power computing, building simulation collateral, and automating functional checks.">
+  <title>Standard-Cell Characterization at Arm | Can Afacan</title>
+  <style>
+:root {
+  color-scheme: light;
+  --ink: #172230;
+  --muted: #495b70;
+  --blue: #1e53a6;
+  --rule: #d3dae1;
+  --paper: #fff;
+  --tint: #f3f6fa;
+  --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: var(--paper); font: 1rem/1.6 var(--sans); }
+h1, h2, h3, p, dl, dd, ul { margin: 0; }
+a { color: var(--blue); text-underline-offset: .2em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+.wrap { width: min(calc(100% - 3rem), 66rem); margin-inline: auto; }
+.topbar { border-bottom: 1px solid var(--rule); }
+.navbar, .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+.navbar { min-height: 4.25rem; }
+.brand { color: var(--ink); font-weight: 740; font-size: 1.15rem; letter-spacing: -.025em; text-decoration: none; }
+.navlinks, .footer-links { display: flex; flex-wrap: wrap; gap: .55rem 1.45rem; }
+.navlinks a { color: var(--muted); font-size: .91rem; font-weight: 550; text-decoration: none; }
+.navlinks a:hover, .navlinks a[aria-current] { color: var(--blue); text-decoration: underline; }
+.skip { position: absolute; inset-inline-start: 1rem; top: -6rem; padding: .4rem 1rem; background: white; }
+.skip:focus { top: .5rem; z-index: 2; }
+.hero { background: var(--tint); border-bottom: 1px solid var(--rule); }
+.hero-inner { padding-block: clamp(1.5rem, 3.2vw, 2.65rem) clamp(2rem, 4vw, 3.4rem); }
+.back { display: inline-block; font-size: .9rem; font-weight: 600; }
+.intro { display: grid; grid-template-columns: minmax(0, 2.45fr) minmax(13rem, 1fr); align-items: end; gap: clamp(2rem, 5vw, 4.5rem); margin-top: 1.65rem; }
+h1 { font-size: clamp(2.15rem, 4.2vw, 3.8rem); line-height: 1.04; letter-spacing: -.047em; font-weight: 680; text-wrap: balance; }
+.lead { max-width: 65ch; margin-top: 1.05rem; font-size: clamp(1.02rem, 1.4vw, 1.17rem); color: #34465a; line-height: 1.6; }
+.meta { border-left: 2px solid #a3b6cd; padding-left: 1.15rem; }
+.meta div + div { margin-top: .9rem; }
+.meta dt { color: var(--muted); font-size: .75rem; font-weight: 650; letter-spacing: .045em; text-transform: uppercase; }
+.meta dd { margin-top: .12rem; font-size: .94rem; line-height: 1.45; }
+.body { padding-block: .4rem 2.6rem; }
+.entry { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.55fr); gap: clamp(1.6rem, 4.5vw, 3.65rem); padding-block: clamp(1.75rem, 3.6vw, 2.9rem); }
+.entry + .entry { border-top: 1px solid var(--rule); }
+h2 { font-size: clamp(1.25rem, 2.2vw, 1.65rem); line-height: 1.2; letter-spacing: -.025em; font-weight: 650; }
+h3 { font-size: 1.04rem; letter-spacing: -.01em; line-height: 1.4; font-weight: 650; margin-bottom: .25rem; }
+.copy { min-width: 0; }
+.copy p, .copy li { max-width: 74ch; }
+.copy p + p { margin-top: .85rem; }
+.copy p + h3 { margin-top: 1.25rem; }
+.copy ul { padding-left: 1.2rem; margin-top: .75rem; }
+.copy li + li { margin-top: .55rem; }
+.copy li::marker { color: var(--blue); }
+footer { border-top: 1px solid var(--rule); }
+.footer-inner { padding-block: 1.35rem; color: var(--muted); font-size: .85rem; }
+@media (max-width: 720px) {
+  .intro { grid-template-columns: 1fr; gap: 1.4rem; }
+  .meta { display: flex; flex-wrap: wrap; column-gap: 2rem; row-gap: .75rem; padding: 1rem 0 0; border-left: 0; border-top: 1px solid var(--rule); }
+  .meta div + div { margin: 0; }
+  .entry { grid-template-columns: 1fr; gap: .85rem; }
+}
+@media (max-width: 560px) {
+  .wrap { width: calc(100% - 2.25rem); }
+  .navbar { padding-block: .7rem; flex-direction: column; align-items: flex-start; gap: .2rem; }
+  .navlinks { gap: .2rem 1rem; }
+  .navlinks a { font-size: .85rem; }
+  .footer-inner { flex-wrap: wrap; gap: .6rem; }
+}
+  </style>
 </head>
 <body>
-
-<header>
-  <nav class="navbar">
-    <a class="logo" href="#top" aria-label="Back to top">
-      <span>Can Afacan</span>
-      <div class="binary-led-row" id="binaryDisplay"></div>
-    </a>
-
-    <button class="nav-toggle" type="button" aria-label="Toggle navigation">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="../index.html#experience">Experience</a></li>
-        <li><a href="../index.html#projects">Projects</a></li>
-        <li><a href="../index.html#education">Education</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
-      </ul>
-      <div class="nav-icons">
-        <a href="https://github.com/CanAfacan" target="_blank">
-          <img src="../images/github.png" alt="GitHub" class="nav-icon" />
-        </a>
-        <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
-          <img src="../images/linkedin.jpg" alt="LinkedIn" class="nav-icon" />
-        </a>
+  <a class="skip" href="#content">Skip to content</a>
+  <header class="topbar">
+    <div class="wrap navbar">
+      <a class="brand" href="../index.html">Can Afacan</a>
+      <nav class="navlinks" aria-label="Portfolio"><a href="../index.html#experience" aria-current="location">Experience</a> <a href="../index.html#projects">Projects</a> <a href="../index.html#education">Education</a> <a href="../index.html#contact">Contact</a></nav>
+    </div>
+  </header>
+  <main id="content">
+    <header class="hero">
+      <div class="wrap hero-inner">
+        <a class="back" href="../index.html#experience">← Experience</a>
+        <div class="intro">
+          <div>
+            <h1>Standard-cell characterization at Arm</h1>
+            <p class="lead">On Arm’s Source Team, I evaluated new standard-cell topologies for low-power computing. I compared them with existing library cells and built transistor-level simulation setups for 41 new circuits and macros.</p>
+          </div>
+          <dl class="meta">
+            <div><dt>Role</dt><dd>Source Team intern</dd></div>
+          </dl>
+        </div>
+      </div>
+    </header>
+    <div class="wrap body">
+      <section class="entry">
+        <h2>Electrical characterization</h2>
+        <div class="copy">
+          <p>I used Cadence Virtuoso to prepare the source collateral for three types of analysis.</p>
+          <ul>
+            <li><strong>Sequential-cell margins.</strong> I developed high-sigma Monte Carlo simulations for flip-flop margining and prepared separate tests for latch-node stability.</li>
+            <li><strong>Power integrity.</strong> I built setups for electromigration and IR-drop (EMIR) analysis.</li>
+            <li><strong>Transistor networks.</strong> I prepared balanced beta-ratio and channel-connected block analyses for the new topologies.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="entry">
+        <h2>Simulation automation</h2>
+        <div class="copy">
+          <h3>One test setup for three simulators</h3>
+          <p>I wrote a converter that takes a Spectre simulation setup and generates its HSPICE and Analog FastSPICE (AFS) equivalents. That let me update a test once in Spectre and carry the change into all three simulators.</p>
+          <h3>Checking a cell against its intended behavior</h3>
+          <p>I built a graphical tool that generates HSPICE input-vector files, runs the simulation, and reports how far the outputs deviate from the expected responses. This gave the team a way to test whether a new transistor topology implemented the intended logic.</p>
+        </div>
+      </section>
+      <section class="entry">
+        <h2>Verilog modeling</h2>
+        <div class="copy">
+          <p>I developed 13 structural and behavioral Verilog models to represent cell behavior in logic-level simulation.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© 2026 Can Afacan</span>
+      <div class="footer-links">
+        <a href="https://github.com/CanAfacan">GitHub</a>
+        <a href="https://www.linkedin.com/in/canafacan/">LinkedIn</a>
       </div>
     </div>
-  </nav>
-</header>
-
-
-
-  <section style="padding: 4rem 2rem; max-width: 900px; margin: auto;">
-    <h1 style="margin-bottom: 1rem;">Under Construction</h1>
-
-    <a href="../index.html" style="color: var(--accent); font-weight: 600;">← Back to Home</a>
-  </section>
-
-  <footer class="site-footer">
-    <div class="footer-left">
-      <p>© 2025 Can Afacan. All rights reserved.</p>
-    </div>
-    <div class="footer-right">
-      <a href="https://github.com/CanAfacan" target="_blank">
-        <img src="../images/github.png" alt="GitHub" class="footer-icon" />
-      </a>
-      <a href="https://www.linkedin.com/in/canafacan/" target="_blank">
-        <img src="../images/linkedin.jpg" alt="LinkedIn" class="footer-icon" />
-      </a>
-    </div>
   </footer>
-
-<script>
-  const hexTicker = document.querySelector(".hex-ticker");
-  const hexCodes = [
-    "0x43", // C
-    "0x61", // a
-    "0x6E", // n
-    "0x20", // space
-    "0x41", // A
-    "0x66", // f
-    "0x61", // a
-    "0x63", // c
-    "0x61", // a
-    "0x6E"  // n
-  ];
-
-  let index = 0;
-  setInterval(() => {
-    hexTicker.textContent = hexCodes[index];
-    index = (index + 1) % hexCodes.length;
-  }, 800); // Adjust speed here if needed
-</script>
-
-<script>
-  const binaryDisplay = document.getElementById("binaryDisplay");
-  const text = "Can Afacan";
-  const binarySequence = text
-    .split("")
-    .map(char => char.charCodeAt(0).toString(2).padStart(8, "0"));
-
-  let currentIndex = 0;
-
-  function updateLEDs(binaryStr) {
-    binaryDisplay.innerHTML = ""; // Clear old LEDs
-    for (let bit of binaryStr) {
-      const dot = document.createElement("div");
-      dot.classList.add("led-dot");
-      if (bit === "1") dot.classList.add("on");
-      binaryDisplay.appendChild(dot);
-    }
-  }
-
-  setInterval(() => {
-    updateLEDs(binarySequence[currentIndex]);
-    currentIndex = (currentIndex + 1) % binarySequence.length;
-  }, 700); // adjust for blink speed
-</script>
-
-<script>
-  const navToggle = document.querySelector('.nav-toggle');
-  const navRight  = document.querySelector('.nav-right');
-
-  if (navToggle && navRight) {
-    navToggle.addEventListener('click', () => {
-      navRight.classList.toggle('open');
-    });
-
-    navRight.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') {
-        navRight.classList.remove('open');
-      }
-    });
-  }
-</script>
-
 </body>
 </html>
